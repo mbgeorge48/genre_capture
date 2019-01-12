@@ -10,7 +10,7 @@ def get_page_URL(movie):
     r = requests.get(processed_URL)
     soup = BeautifulSoup(''.join(r.text), features="lxml")
     table = soup.find("table", attrs={"class": "findList"})
-    print ('Movie search returned: ' + str(r.status_code))
+    # print ('Movie search returned: ' + str(r.status_code))
     # genres =  get_genres(table.find("tr").select('a[href]')[0].get('href'))
     return get_genres(table.find("tr").select('a[href]')[0].get('href'))
 
@@ -21,7 +21,7 @@ def get_genres(path):
     r = requests.get(movie_URL)
     soup = BeautifulSoup(''.join(r.text), features="lxml")
     genres = soup.find("div", attrs={"class": "subtext"})
-    print ('Movie page returned: ' + str(r.status_code))
+    # print ('Movie page returned: ' + str(r.status_code))
 
 
     parent = genres.find_all("a")
